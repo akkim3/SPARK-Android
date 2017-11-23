@@ -1,2 +1,2 @@
 # SPARK-Android
-Repo for SPARK Foundation App Context Android version
+Repo for SPARK Foundation App Contest Android version
