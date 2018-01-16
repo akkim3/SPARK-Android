@@ -18,9 +18,11 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
     completions."
-    <!-- Strings related to login -->
+        <!-- Strings related to login -->
     </string>
 
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
+
+    <string name="title_activity_child_question">ChildQuestion</string>
 </resources>

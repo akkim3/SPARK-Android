@@ -33,7 +33,12 @@
             android:label="@string/title_activity_navigation" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".ChildQuestion"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_child_question"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>
