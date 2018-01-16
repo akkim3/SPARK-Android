@@ -9,47 +9,47 @@
     android:background="@drawable/login_selector">
 
 
-    <LinearLayout
+   <LinearLayout
 
-        android:layout_marginTop="@dimen/activity_vertical_margin_large"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+       android:layout_marginTop="@dimen/activity_vertical_margin_large"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="70dp"
+           android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin_big"
-                android:fontFamily="@font/adam"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:text="How do you feel?"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="@dimen/activity_vertical_margin_big"
+               android:fontFamily="@font/adam"
+               android:layout_marginLeft="@dimen/activity_horizontal_margin"
+               android:text="How do you feel?"
+               android:textColor="@color/colorWhite"
+               android:textSize="20sp" />
 
-            <ImageView
-                android:src="@drawable/tts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                />
+           <ImageView
+               android:src="@drawable/tts"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="bottom"
+              />
 
-        </LinearLayout>
+       </LinearLayout>
 
-        <ImageButton
-            android:src="@drawable/happy"
-            android:background="@drawable/roundcorner"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            />
+       <ImageButton
+           android:src="@drawable/happy"
+           android:background="@drawable/roundcorner"
+           android:layout_width="100dp"
+           android:layout_height="100dp"
+           android:layout_gravity="center"
+           />
 
 
-    </LinearLayout>
+   </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
