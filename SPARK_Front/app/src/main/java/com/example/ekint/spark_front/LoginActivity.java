@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity  {
     //Button Clicked, Mock
     @OnClick(R.id.email_sign_in_button)
     public void onViewClicked() {
-        Intent mainIntent = new Intent(LoginActivity.this, NavigationActivity.class);
+        Intent mainIntent = new Intent(LoginActivity.this, PersonActivity.class);
         startActivity(mainIntent);
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         finish();

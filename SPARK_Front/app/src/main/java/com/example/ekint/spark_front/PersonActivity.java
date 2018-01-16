@@ -36,19 +36,19 @@ public class PersonActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.llChild:
-                Intent homeIntent = new Intent(PersonActivity.this, LoginActivity.class);
+                Intent homeIntent = new Intent(PersonActivity.this, ChildQuestion.class);
                 startActivity(homeIntent);
                 overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                 finish();
                 break;
             case R.id.llParent:
-                Intent homeIntent2 = new Intent(PersonActivity.this, LoginActivity.class);
+                Intent homeIntent2 = new Intent(PersonActivity.this, NavigationActivity.class);
                 startActivity(homeIntent2);
                 overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                 finish();
                 break;
             case R.id.llDoctor:
-                Intent homeIntent3 = new Intent(PersonActivity.this, LoginActivity.class);
+                Intent homeIntent3 = new Intent(PersonActivity.this, NavigationActivity.class);
                 startActivity(homeIntent3);
                 overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                 finish();

@@ -12,13 +12,15 @@
     <LinearLayout
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="3">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,13 +42,87 @@
         </LinearLayout>
 
 
-        <at.markushi.ui.CircleButton
-            android:layout_width="100dip"
-            android:layout_height="100dip"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/happyFAB"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:src="@drawable/happy"
-            app:cb_color="#99CC00"
-            app:cb_pressedRingWidth="8dip"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+
+            app:elevation="10dp"
+            app:backgroundTint="@color/colorPrimary"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            app:borderWidth="0dp"
+            android:layout_weight="1"
+              />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/happy2FAB"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/happy2"
+            android:layout_gravity="center"
+            app:elevation="10dp"
+            app:backgroundTint="@color/colorSmile"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            app:borderWidth="0dp"
+            android:layout_weight="1"
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/midFAB"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/neutral"
+            android:layout_gravity="center"
+            app:elevation="10dp"
+            app:backgroundTint="@color/colorNetural"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            app:borderWidth="0dp"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/sadFAB"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/sad"
+            android:layout_gravity="center"
+            app:elevation="10dp"
+            app:backgroundTint="@color/colorSad"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            app:borderWidth="0dp"
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/angryFAB"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/angry"
+            android:layout_gravity="center"
+            app:elevation="10dp"
+            app:backgroundTint="@color/colorAngry"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            app:borderWidth="0dp"
+            />
+
+
 
     </LinearLayout>
 
