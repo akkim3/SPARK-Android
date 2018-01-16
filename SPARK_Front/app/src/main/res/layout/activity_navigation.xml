@@ -5,9 +5,51 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ekint.spark_front.NavigationActivity">
+    tools:context="com.example.ekint.spark_front.NavigationActivity"
+    android:background="@drawable/login_selector">
 
 
+    <LinearLayout
+
+        android:layout_marginTop="@dimen/activity_vertical_margin_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin_big"
+                android:fontFamily="@font/adam"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:text="How do you feel?"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:src="@drawable/tts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:src="@drawable/happy"
+            android:background="@drawable/roundcorner"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            />
+
+
+    </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
