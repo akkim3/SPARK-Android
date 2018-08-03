@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_addentry"
+        android:enabled="true"
+        android:icon="@drawable/baseline_edit_black_48dp"
+        android:title="@string/text_addentry"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_journal"
+        android:enabled="true"
+        android:icon="@drawable/baseline_book_black_48dp"
+        android:title="@string/text_journal"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_chart"
+        android:enabled="true"
+        android:icon="@drawable/baseline_show_chart_black_48dp"
+        android:title="@string/text_chart"
+        app:showAsAction="ifRoom" />
+
+</menu>
