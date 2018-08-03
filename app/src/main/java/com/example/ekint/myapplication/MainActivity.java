@@ -1,12 +1,13 @@
 package com.example.ekint.myapplication;
 
+import android.content.res.Configuration;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Entry> entryList;
     private android.support.v7.widget.Toolbar toolbar;
     private RecyclerView rvEntries;
+    private RecyclerView rvEntriesLand;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +32,31 @@ public class MainActivity extends AppCompatActivity {
 //        ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowCustomEnabled(true); // enable overriding the default toolbar layout
 
-        rvEntries = (RecyclerView) findViewById(R.id.rvEntries);
-        rvEntries.setHasFixedSize(true);
-
-        LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        rvEntries.setLayoutManager(llm);
-
+        Configuration config = getResources().getConfiguration();
         initializeData();
-        EntryMainRVAdapter entryAdapter = new EntryMainRVAdapter(this, entryList);
-        rvEntries.setAdapter(entryAdapter);
+
+        if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            rvEntries = (RecyclerView) findViewById(R.id.rvEntriesLand);
+            rvEntries.setHasFixedSize(true);
+
+//            LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+            GridLayoutManager glm = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
+            rvEntries.setLayoutManager(glm);
+
+            EntryMainRVAdapter entryAdapter = new EntryMainRVAdapter(this, entryList);
+            rvEntries.setAdapter(entryAdapter);
+        } else if (config.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            rvEntriesLand = (RecyclerView) findViewById(R.id.rvEntriesLand);
+            rvEntriesLand.setHasFixedSize(true);
+
+            LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+//            GridLayoutManager glm = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
+            rvEntriesLand.setLayoutManager(llm);
+
+            EntryMainRVAdapter entryAdapter = new EntryMainRVAdapter(this, entryList);
+            rvEntriesLand.setAdapter(entryAdapter);
+        }
+
     }
 
     @Override
