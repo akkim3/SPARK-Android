@@ -4,4 +4,5 @@
     <string name="text_journal">Journal</string>
     <string name="text_chart">Chart</string>
     <string name="empty_entry">Null</string>
+    <string name="entries">Recent Entries</string>
 </resources>
