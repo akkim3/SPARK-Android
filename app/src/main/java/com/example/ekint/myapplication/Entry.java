@@ -1,10 +1,12 @@
 package com.example.ekint.myapplication;
 
+import java.io.Serializable;
+
 /**
  * Created by ekint on 8/3/2018.
  */
 
-public class Entry {
+public class Entry implements Serializable{
     private String title;
     private String date;
     private String time;

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Inquis</string>
     <string name="text_addentry">Add Entry</string>
+    <string name="text_newentry">New Entry</string>
     <string name="text_journal">Journal</string>
     <string name="text_chart">Chart</string>
     <string name="empty_entry">Null</string>

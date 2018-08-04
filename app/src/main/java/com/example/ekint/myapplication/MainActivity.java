@@ -1,23 +1,34 @@
 package com.example.ekint.myapplication;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity implements RecyclerItemClickListener.OnRecyclerClickListener{
 
     private List<Entry> entryList;
     private android.support.v7.widget.Toolbar toolbar;
     private RecyclerView rvEntries;
     private RecyclerView rvEntriesLand;
+    private EntryMainRVAdapter entryAdapter;
+    private BottomNavigationView bnvView;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         Configuration config = getResources().getConfiguration();
         initializeData();
 
+        entryAdapter = new EntryMainRVAdapter(this, entryList);
+//        Set up Recycler View
         if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
             rvEntries = (RecyclerView) findViewById(R.id.rvEntriesLand);
             rvEntries.setHasFixedSize(true);
@@ -43,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             GridLayoutManager glm = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
             rvEntries.setLayoutManager(glm);
 
-            EntryMainRVAdapter entryAdapter = new EntryMainRVAdapter(this, entryList);
+            rvEntries.addOnItemTouchListener(new RecyclerItemClickListener(this, rvEntries, this));
             rvEntries.setAdapter(entryAdapter);
         } else if (config.orientation == Configuration.ORIENTATION_LANDSCAPE){
             rvEntriesLand = (RecyclerView) findViewById(R.id.rvEntriesLand);
@@ -52,10 +65,28 @@ public class MainActivity extends AppCompatActivity {
             LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 //            GridLayoutManager glm = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
             rvEntriesLand.setLayoutManager(llm);
-
-            EntryMainRVAdapter entryAdapter = new EntryMainRVAdapter(this, entryList);
             rvEntriesLand.setAdapter(entryAdapter);
         }
+
+        bnvView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bnvView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_addentry:
+                                Intent addEntry = new Intent(MainActivity.this, AddEntry.class);
+                                startActivity(addEntry);
+                                break;
+                            case R.id.action_journal:
+                                break;
+                            case R.id.action_chart:
+                                break;
+                        }
+                        return false;
+                    }
+                }
+        );
 
     }
 
@@ -63,6 +94,20 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.overflow_menu, menu);
         return true;
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(MainActivity.this, "Normal tap at position " + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, EntryDetailActivity.class);
+        intent.putExtra(ENTRY_TRANSFER, entryAdapter.getEntry(position));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
+        Log.d(TAG, "onItemLongClick: starts");
+//        Toast.makeText(MainActivity.this, "Long tap at position " + position, Toast.LENGTH_SHORT).show();
     }
 
     private void initializeData(){

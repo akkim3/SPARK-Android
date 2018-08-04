@@ -16,8 +16,16 @@ import java.util.List;
 
 public class EntryMainRVAdapter extends RecyclerView.Adapter<EntryMainRVAdapter.EntryMainViewHolder> {
 
+    public void setmEntryList(List<Entry> mEntryList) {
+        this.mEntryList = mEntryList;
+    }
+
     private List<Entry> mEntryList;
     private Context mContext;
+
+    public List<Entry> getmEntryList() {
+        return mEntryList;
+    }
 
     public EntryMainRVAdapter(Context context, List<Entry> entryList) {
         this.mContext = context;
@@ -46,6 +54,10 @@ public class EntryMainRVAdapter extends RecyclerView.Adapter<EntryMainRVAdapter.
     @Override
     public int getItemCount() {
         return ((mEntryList != null) && (mEntryList.size() !=0) ? mEntryList.size() : 1);
+    }
+
+    public Entry getEntry(int position) {
+        return ((mEntryList != null) && (mEntryList.size() !=0) ? mEntryList.get(position) : null);
     }
 
     static class EntryMainViewHolder extends RecyclerView.ViewHolder{
