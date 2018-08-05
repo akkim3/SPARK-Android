@@ -2,8 +2,11 @@ package com.example.ekint.myapplication;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,30 +30,30 @@ import java.util.List;
 public class MainActivity extends BaseActivity implements RecyclerItemClickListener.OnRecyclerClickListener{
 
     private List<Entry> entryList;
+    private ImageView toolbarLogo;
     private android.support.v7.widget.Toolbar toolbar;
     private RecyclerView rvEntries;
     private RecyclerView rvEntriesLand;
     private EntryMainRVAdapter entryAdapter;
     private BottomNavigationView bnvView;
+    private AHBottomNavigation ahBottomNavigation;
+    private NoSwipePager viewPager;
+    private BottomBarAdapter pagerAdapter;
+
     private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_coord);
 
-        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
-
-        ActionBar ab = getSupportActionBar();
-//        ab.setDisplayShowHomeEnabled(true); // show or hide the default home button
-//        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setDisplayShowCustomEnabled(true); // enable overriding the default toolbar layout
+        activateToolbar(false);
 
         Configuration config = getResources().getConfiguration();
         initializeData();
 
-        entryAdapter = new EntryMainRVAdapter(this, entryList);
+
+        /*entryAdapter = new EntryMainRVAdapter(this, entryList);
 //        Set up Recycler View
         if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
             rvEntries = (RecyclerView) findViewById(R.id.rvEntriesLand);
@@ -66,9 +73,30 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
 //            GridLayoutManager glm = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
             rvEntriesLand.setLayoutManager(llm);
             rvEntriesLand.setAdapter(entryAdapter);
-        }
+        }*/
 
-        bnvView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        setupViewPager();
+
+        ahBottomNavigation = (AHBottomNavigation) findViewById(R.id.ah_bottom_navigation);
+        addBottomNavigationItems();
+        ahBottomNavigation.setCurrentItem(0);
+
+        ahBottomNavigation.setDefaultBackgroundColor(Color.WHITE);
+        ahBottomNavigation.setAccentColor(fetchColor(R.color.accent));
+        ahBottomNavigation.setInactiveColor(fetchColor(R.color.colorBottomNavigationInactive));
+//        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
+        ahBottomNavigation.setBehaviorTranslationEnabled(true);
+
+        ahBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+                if (!wasSelected){
+                    viewPager.setCurrentItem(position);
+                }
+                return true;
+            }
+        });
+        /*bnvView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bnvView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -86,7 +114,7 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
                         return false;
                     }
                 }
-        );
+        );*/
 
     }
 
@@ -119,5 +147,48 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         entryList.add(new Entry("rip me", "null"));
         entryList.add(new Entry("too loud", "null"));
 
+    }
+
+    private void addBottomNavigationItems(){
+        AHBottomNavigationItem itemHome = new AHBottomNavigationItem(R.string.text_home, R.drawable.baseline_home_black_48dp, R.color.accent);
+        AHBottomNavigationItem itemJournal = new AHBottomNavigationItem(R.string.text_journal, R.drawable.baseline_book_black_48dp, R.color.accent);
+        AHBottomNavigationItem itemChart = new AHBottomNavigationItem(R.string.text_chart, R.drawable.baseline_show_chart_black_48dp, R.color.accent);
+        AHBottomNavigationItem itemFeed = new AHBottomNavigationItem(R.string.text_feed, R.drawable.baseline_question_answer_black_48dp, R.color.accent);
+
+        ahBottomNavigation.addItem(itemHome);
+        ahBottomNavigation.addItem(itemJournal);
+        ahBottomNavigation.addItem(itemChart);
+        ahBottomNavigation.addItem(itemFeed);
+    }
+
+    private void setupViewPager() {
+        viewPager = (NoSwipePager) findViewById(R.id.view_pager);
+        viewPager.setPagingEnabled(false);
+        pagerAdapter = new BottomBarAdapter(getSupportFragmentManager());
+
+        pagerAdapter.addFragments(createFragment(R.color.accent));
+        pagerAdapter.addFragments(createFragment(R.color.accent));
+        pagerAdapter.addFragments(createFragment(R.color.accent));
+        pagerAdapter.addFragments(createFragment(R.color.accent));
+
+        viewPager.setAdapter(pagerAdapter);
+    }
+
+    @NonNull
+    private MainFragment createFragment(int color) {
+        MainFragment fragment = new MainFragment();
+        fragment.setArguments(passFragmentArguments(fetchColor(color)));
+        return fragment;
+    }
+
+    @NonNull
+    private Bundle passFragmentArguments(int color) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("color", color);
+        return bundle;
+    }
+
+    private int fetchColor(@ColorRes int color){
+        return ContextCompat.getColor(this, color);
     }
 }
