@@ -2,6 +2,10 @@ package com.example.ekint.myapplication;
 
 import android.util.Log;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -39,7 +43,9 @@ public class FeedParser {
         //Looking at tags inside entry or not?
         boolean inItem = false;
         boolean inTitle = false;
+        boolean inDescription = false;
         String textValue = "";
+        String descriptionValue = "";
 
         try{
             //Factory produces pull parser code for us
@@ -64,6 +70,11 @@ public class FeedParser {
                         if("title".equalsIgnoreCase(tagName) && inItem == false){
                             inTitle = true;
                         }
+
+                        if("description".equalsIgnoreCase(tagName)){
+                            Log.d(TAG, "parse: go inside description");
+                            inDescription = true;
+                        }
                         break;
                     case XmlPullParser.TEXT:
                         textValue = xpp.getText();
@@ -71,18 +82,26 @@ public class FeedParser {
                     case XmlPullParser.END_TAG:
                         Log.d(TAG, "parse: Ending tag for " + tagName);
                         if (inItem){
+
+                            if(inDescription){
+                                Log.d(TAG, "parse: inDescription");
+                                Document doc = Jsoup.parse(textValue);
+                                Elements test = doc.select("p");
+                                descriptionValue = test.text();
+                            }
                             //Write order to avoid null
                             if("item".equalsIgnoreCase(tagName)){
                                 quoraEntries.add(currentRecord);
                                 inItem = false;
                             } else if("title".equalsIgnoreCase(tagName)){
                                 currentRecord.setTitle(textValue);
-                            } else if ("dc:creator".equalsIgnoreCase(tagName)){
+                            } else if ("creator".equalsIgnoreCase(tagName)){
                                 currentRecord.setCreator(textValue);
                             } else if ("pubDate".equalsIgnoreCase(tagName)){
                                 currentRecord.setDate(textValue);
                             } else if ("description".equalsIgnoreCase(tagName)){
-                                currentRecord.setDescription(textValue);
+                                Log.d(TAG, "parse: here" + descriptionValue);
+                                currentRecord.setDescription(descriptionValue);
                             }
                         } else {
                             if ("title".equalsIgnoreCase(tagName)){

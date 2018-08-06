@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_distance_extended">368dp</dimen>
+    <dimen name="fab_distance_normal">424dp</dimen>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/my_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="128dp"
+    android:minHeight="?android:attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:elevation="4dp"
+    android:theme="@style/ToolbarTheme"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/toolbar_logo"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:paddingStart="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="51dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="28dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="36dp"
+                android:layout_toRightOf="@id/toolbar_logo"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:text="@string/app_name"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/toolbar_logo"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_logo" />
+
+        </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.Toolbar>

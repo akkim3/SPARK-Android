@@ -6,15 +6,9 @@
     tools:context="com.example.ekint.myapplication.FeedFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="128dp"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:minHeight="?android:attr/actionBarSize"
-        android:theme="@style/ToolbarTheme"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    <include
+        android:id="@+id/includeFragmentFeed"
+        layout="@layout/app_bar_normal" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvFeedEntries"
@@ -28,6 +22,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/includeFragmentFeed" />
 
 </android.support.constraint.ConstraintLayout>

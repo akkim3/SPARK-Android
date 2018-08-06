@@ -5,7 +5,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,12 +14,12 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class MainFragment extends Fragment {
+public class SubJournalRecent extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
     private RecyclerView rvEntries;
     private RecyclerView rvEntriesLand;
     private EntryMainRVAdapter entryAdapter;
@@ -30,8 +29,7 @@ public class MainFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
-    public MainFragment() {
+    public SubJournalRecent() {
         // Required empty public constructor
     }
 
@@ -41,11 +39,11 @@ public class MainFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MainFragment.
+     * @return A new instance of fragment SubJournalRecent.
      */
     // TODO: Rename and change types and number of parameters
-    public static MainFragment newInstance(String param1, String param2) {
-        MainFragment fragment = new MainFragment();
+    public static SubJournalRecent newInstance(String param1, String param2) {
+        SubJournalRecent fragment = new SubJournalRecent();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,14 +58,14 @@ public class MainFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_sub_journal_recent, container, false);
+
 
         Configuration config = getResources().getConfiguration();
         initializeData();
@@ -75,7 +73,7 @@ public class MainFragment extends Fragment {
         entryAdapter = new EntryMainRVAdapter(getContext(), entryList);
 //        Set up Recycler View
 
-        rvEntries = (RecyclerView) rootView.findViewById(R.id.rvEntriesLand);
+        rvEntries = (RecyclerView) rootView.findViewById(R.id.rvEntriesJournalRecent);
         rvEntries.setHasFixedSize(true);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -84,7 +82,9 @@ public class MainFragment extends Fragment {
 //            rvEntries.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), rvEntries));
         rvEntries.setAdapter(entryAdapter);
 
+
         return rootView;
+
     }
 
     private void initializeData() {
@@ -97,4 +97,5 @@ public class MainFragment extends Fragment {
         entryList.add(new Entry("too loud", "null"));
 
     }
+
 }

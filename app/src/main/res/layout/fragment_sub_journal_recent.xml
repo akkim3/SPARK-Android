@@ -1,36 +1,26 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ekint.myapplication.MainFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.ekint.myapplication.SubJournalRecent">
 
-    <!-- TODO: Update blank fragment layout -->
     <android.support.constraint.ConstraintLayout
         android:id="@+id/clMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/my_toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="128dp"-->
-            <!--android:background="?attr/colorPrimary"-->
-            <!--android:elevation="4dp"-->
-            <!--android:minHeight="?android:attr/actionBarSize"-->
-            <!--android:theme="@style/ToolbarTheme"-->
-            <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
         <include
             android:id="@+id/include3"
             layout="@layout/app_bar_normal" />
 
         <TextView
-            android:id="@+id/tvTitleDetail"
+            android:id="@+id/tvRecent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="72dp"
             android:fontFamily="sans-serif-smallcaps"
             android:text="@string/entries"
             android:textAlignment="textStart"
@@ -42,7 +32,7 @@
             app:layout_constraintTop_toBottomOf="@+id/include3" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvEntriesLand"
+            android:id="@+id/rvEntriesJournalRecent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -51,22 +41,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleDetail">
+            app:layout_constraintTop_toBottomOf="@id/tvRecent">
 
         </android.support.v7.widget.RecyclerView>
     </android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fabJournalRecentn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/fab_distance_normal"
+        android:layout_marginBottom="@dimen/fab_distance_extended"
         android:layout_marginEnd="8dp"
 
         android:clickable="true"
         android:src="@drawable/baseline_add_black_48dp"
         app:fabSize="mini"
-        app:layout_anchor="@id/rvEntriesLand"
+        app:layout_anchor="@id/rvEntriesJournalRecent"
         app:layout_anchorGravity="right|bottom" />
+
 
 </android.support.design.widget.CoordinatorLayout>

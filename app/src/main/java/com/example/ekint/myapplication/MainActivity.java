@@ -129,7 +129,7 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         pagerAdapter = new BottomBarAdapter(getSupportFragmentManager());
 
         pagerAdapter.addFragments(createFragment(R.color.accent));
-        pagerAdapter.addFragments(createFragment(R.color.accent));
+        pagerAdapter.addFragments(createJournalFragment(R.color.accent));
         pagerAdapter.addFragments(createFragment(R.color.accent));
         pagerAdapter.addFragments(createFeedFragment(R.color.accent));
 
@@ -139,6 +139,13 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
     @NonNull
     private MainFragment createFragment(int color) {
         MainFragment fragment = new MainFragment();
+        fragment.setArguments(passFragmentArguments(fetchColor(color)));
+        return fragment;
+    }
+
+    @NonNull
+    private JournalFragment createJournalFragment(int color) {
+        JournalFragment fragment = new JournalFragment();
         fragment.setArguments(passFragmentArguments(fetchColor(color)));
         return fragment;
     }
