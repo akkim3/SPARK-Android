@@ -23,6 +23,7 @@ public class BaseActivity extends AppCompatActivity {
                 setSupportActionBar(toolbar);
                 ab = getSupportActionBar();
                 ab.setDisplayShowCustomEnabled(true);
+
             }
 
         }
