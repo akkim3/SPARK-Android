@@ -78,9 +78,9 @@ public class MainFragment extends Fragment {
             rvEntries = (RecyclerView) rootView.findViewById(R.id.rvEntriesLand);
             rvEntries.setHasFixedSize(true);
 
-//            LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-            GridLayoutManager glm = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
-            rvEntries.setLayoutManager(glm);
+            LinearLayoutManager llm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+//            GridLayoutManager glm = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+            rvEntries.setLayoutManager(llm);
 //            rvEntries.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), rvEntries));
             rvEntries.setAdapter(entryAdapter);
         }
