@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
     private android.support.v7.widget.Toolbar toolbar;
     private RecyclerView rvEntries;
     private RecyclerView rvEntriesLand;
-    private EntryMainRVAdapter entryAdapter;
+    private FeedRVAdapter entryAdapter;
     private BottomNavigationView bnvView;
     private AHBottomNavigation ahBottomNavigation;
     private NoSwipePager viewPager;
@@ -62,6 +62,7 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         getMenuInflater().inflate(R.menu.overflow_menu, menu);
         return true;
     }
+
 
     @Override
     public void onItemClick(View view, int position) {
@@ -130,7 +131,7 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         pagerAdapter.addFragments(createFragment(R.color.accent));
         pagerAdapter.addFragments(createFragment(R.color.accent));
         pagerAdapter.addFragments(createFragment(R.color.accent));
-        pagerAdapter.addFragments(createFragment(R.color.accent));
+        pagerAdapter.addFragments(createFeedFragment(R.color.accent));
 
         viewPager.setAdapter(pagerAdapter);
     }
@@ -138,6 +139,13 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
     @NonNull
     private MainFragment createFragment(int color) {
         MainFragment fragment = new MainFragment();
+        fragment.setArguments(passFragmentArguments(fetchColor(color)));
+        return fragment;
+    }
+
+    @NonNull
+    private FeedFragment createFeedFragment(int color) {
+        FeedFragment fragment = new FeedFragment();
         fragment.setArguments(passFragmentArguments(fetchColor(color)));
         return fragment;
     }
