@@ -52,69 +52,8 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         Configuration config = getResources().getConfiguration();
         initializeData();
 
-
-        /*entryAdapter = new EntryMainRVAdapter(this, entryList);
-//        Set up Recycler View
-        if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            rvEntries = (RecyclerView) findViewById(R.id.rvEntriesLand);
-            rvEntries.setHasFixedSize(true);
-
-//            LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-            GridLayoutManager glm = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
-            rvEntries.setLayoutManager(glm);
-
-            rvEntries.addOnItemTouchListener(new RecyclerItemClickListener(this, rvEntries, this));
-            rvEntries.setAdapter(entryAdapter);
-        } else if (config.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            rvEntriesLand = (RecyclerView) findViewById(R.id.rvEntriesLand);
-            rvEntriesLand.setHasFixedSize(true);
-
-            LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-//            GridLayoutManager glm = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
-            rvEntriesLand.setLayoutManager(llm);
-            rvEntriesLand.setAdapter(entryAdapter);
-        }*/
-
         setupViewPager();
-
-        ahBottomNavigation = (AHBottomNavigation) findViewById(R.id.ah_bottom_navigation);
-        addBottomNavigationItems();
-        ahBottomNavigation.setCurrentItem(0);
-
-        ahBottomNavigation.setDefaultBackgroundColor(Color.WHITE);
-        ahBottomNavigation.setAccentColor(fetchColor(R.color.accent));
-        ahBottomNavigation.setInactiveColor(fetchColor(R.color.colorBottomNavigationInactive));
-//        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
-        ahBottomNavigation.setBehaviorTranslationEnabled(true);
-
-        ahBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
-            @Override
-            public boolean onTabSelected(int position, boolean wasSelected) {
-                if (!wasSelected){
-                    viewPager.setCurrentItem(position);
-                }
-                return true;
-            }
-        });
-        /*bnvView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        bnvView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.action_addentry:
-                                Intent addEntry = new Intent(MainActivity.this, AddEntry.class);
-                                startActivity(addEntry);
-                                break;
-                            case R.id.action_journal:
-                                break;
-                            case R.id.action_chart:
-                                break;
-                        }
-                        return false;
-                    }
-                }
-        );*/
+        setupBNV();
 
     }
 
@@ -147,6 +86,28 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         entryList.add(new Entry("rip me", "null"));
         entryList.add(new Entry("too loud", "null"));
 
+    }
+
+    private void setupBNV(){
+        ahBottomNavigation = (AHBottomNavigation) findViewById(R.id.ah_bottom_navigation);
+        addBottomNavigationItems();
+        ahBottomNavigation.setCurrentItem(0);
+
+        ahBottomNavigation.setDefaultBackgroundColor(Color.WHITE);
+        ahBottomNavigation.setAccentColor(fetchColor(R.color.accent));
+        ahBottomNavigation.setInactiveColor(fetchColor(R.color.colorBottomNavigationInactive));
+//        ahBottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
+        ahBottomNavigation.setBehaviorTranslationEnabled(true);
+
+        ahBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+                if (!wasSelected){
+                    viewPager.setCurrentItem(position);
+                }
+                return true;
+            }
+        });
     }
 
     private void addBottomNavigationItems(){
