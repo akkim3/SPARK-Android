@@ -2,4 +2,6 @@
 <resources>
     <dimen name="fab_distance_extended">368dp</dimen>
     <dimen name="fab_distance_normal">424dp</dimen>
+    <dimen name="top_normal_elevation">4dp</dimen>
+    <dimen name="top_deep_elevation">10dp</dimen>
 </resources>

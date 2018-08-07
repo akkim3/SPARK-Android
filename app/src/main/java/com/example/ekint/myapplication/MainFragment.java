@@ -22,8 +22,8 @@ import java.util.List;
  * @version 1.0
  * Date: 8/6/18
  */
+//TODO: Find better way to anchor floating action button on main recycler view
 public class MainFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -32,7 +32,6 @@ public class MainFragment extends Fragment {
     private EntryMainRVAdapter entryAdapter;
     private List<Entry> entryList;
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
