@@ -9,11 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * TabAdapter is a Fragment Adapter that controls the fragments shown on the screen.
+ * Designed for the tabs on the journal fragment
  * @author ekint
- *
- *
+ * @version 1.0
  */
+
 
 public class TabAdapter extends FragmentStatePagerAdapter {
 
