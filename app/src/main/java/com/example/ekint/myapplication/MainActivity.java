@@ -27,6 +27,12 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Main Activity that houses all fragments seen on main BNV
+ * @author ekint
+ * @version 1.0
+ * Date: 8/3/18
+ */
 public class MainActivity extends BaseActivity implements RecyclerItemClickListener.OnRecyclerClickListener{
 
     private List<Entry> entryList;
@@ -57,13 +63,22 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
 
     }
 
+    /**
+     * Creates overflow menu icon on upper-right hand corner of toolbar
+     * @param menu menu input, not used
+     * @return     true for success
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.overflow_menu, menu);
         return true;
     }
 
-
+    /**
+     * Normal click listener for card views in main fragment recycler view
+     * @param view     view to listen for
+     * @param position position of item in recycler view
+     */
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(MainActivity.this, "Normal tap at position " + position, Toast.LENGTH_SHORT).show();
@@ -72,12 +87,22 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         startActivity(intent);
     }
 
+    /**
+     * Long click listener for card views in main fragment recycler view
+     * last time checked, did not work
+     * @param view     view to listen for
+     * @param position position of item in recycler view
+     */
     @Override
     public void onItemLongClick(View view, int position) {
         Log.d(TAG, "onItemLongClick: starts");
 //        Toast.makeText(MainActivity.this, "Long tap at position " + position, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Temporary method to add fake entries to the entryList arrayList
+     * contents feed into recycler view
+     */
     private void initializeData(){
         entryList = new ArrayList<Entry>();
         entryList.add(new Entry("Son throwing tantrums", "null"));
@@ -89,6 +114,9 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
 
     }
 
+    /**
+     * Method sets up bottom navigation view for activity
+     */
     private void setupBNV(){
         ahBottomNavigation = (AHBottomNavigation) findViewById(R.id.ah_bottom_navigation);
         addBottomNavigationItems();
@@ -111,6 +139,9 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         });
     }
 
+    /**
+     * Adds each item on bottom navigation view, icons
+     */
     private void addBottomNavigationItems(){
         AHBottomNavigationItem itemHome = new AHBottomNavigationItem(R.string.text_home, R.drawable.baseline_home_black_48dp, R.color.accent);
         AHBottomNavigationItem itemJournal = new AHBottomNavigationItem(R.string.text_journal, R.drawable.baseline_book_black_48dp, R.color.accent);
@@ -123,6 +154,9 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         ahBottomNavigation.addItem(itemFeed);
     }
 
+    /**
+     * Sets up view pager for bottom navigation view
+     */
     private void setupViewPager() {
         viewPager = (NoSwipePager) findViewById(R.id.view_pager);
         viewPager.setPagingEnabled(false);
@@ -164,6 +198,11 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         return bundle;
     }
 
+    /**
+     * Gets specific color given resource id
+     * @param color resource id of needed color, ex. R.color._
+     * @return      integer that corresponds to respective color
+     */
     private int fetchColor(@ColorRes int color){
         return ContextCompat.getColor(this, color);
     }

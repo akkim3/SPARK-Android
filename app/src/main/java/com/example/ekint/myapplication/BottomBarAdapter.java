@@ -7,7 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ekint on 8/5/2018.
+ * BottomBarAdapter is a Fragment Adapter that controls the fragments shown on the screen.
+ * Designed for the Bottom Navigation View
+ * @author ekint
+ * @version 1.0
+ * Date: 8/6/18
  */
 
 public class BottomBarAdapter extends SmartFragmentStatePagerAdapter {

@@ -10,9 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by ekint on 8/3/2018.
+ * EntryDetailActivity is the view that is opened if a card view for an entry is clicked.
+ * Created to provide user more information about entry.
+ * @author ekint
+ * @version 1.0
  */
 
+//TODO: Find way to show detail on expanded card instead of switch to different activity
 public class EntryDetailActivity extends BaseActivity{
 
     @Override

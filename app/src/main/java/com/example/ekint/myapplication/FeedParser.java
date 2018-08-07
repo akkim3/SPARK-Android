@@ -13,7 +13,11 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 /**
- * Created by ekint on 8/5/2018.
+ * FeedParser parses RSS string,
+ * assume already pulled from web RSS feed
+ * @author ekint
+ * @version 1.0
+ * Date: 8/5/18
  */
 
 public class FeedParser {
@@ -37,6 +41,11 @@ public class FeedParser {
         return quoraEntries;
     }
 
+    /**
+     * Method parses xml string data.
+     * @param xmlData string in xml, from rss feed
+     * @return true to determine parse success
+     */
     public boolean parse(String xmlData){
         boolean status = true;
         FeedEntry currentRecord = null;

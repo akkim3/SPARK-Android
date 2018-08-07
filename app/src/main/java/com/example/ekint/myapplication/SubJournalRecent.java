@@ -14,6 +14,13 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * SubJournalRecent is Sub-Fragment in the Journal Fragment
+ * Displays more recent entries
+ * @author ekint
+ * @version 1.0
+ * Date: 8/6/18
+ */
 public class SubJournalRecent extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

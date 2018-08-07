@@ -23,7 +23,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * FeedFragment is the fragment that displays the q&a feed.
+ * Fourth, Last in Bottom Navigation View
+ * @author ekint
+ * @version 1.0
+ * Date: 8/6/18
+ */
 public class FeedFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -109,6 +115,10 @@ public class FeedFragment extends Fragment {
         }
     }
 
+    /**
+     * DownloadData class is an Asynchronous Task that pulls data from an RSS feed
+     * and sends it through a FeedParser
+     */
     private class DownloadData extends AsyncTask<String, Void, String> {
         private static final String TAG = "DownloadData";
         //Have to run doInBackground method, actually does processing
@@ -144,6 +154,11 @@ public class FeedFragment extends Fragment {
 
         }
 
+        /**
+         * Downloads string from RSS feed.
+         * @param urlPath url of RSS feed
+         * @return raw rss string, yet to be parsed
+         */
         private String downloadXML(String urlPath){
             StringBuilder xmlResult = new StringBuilder();
             //Use try catch when getting info from external source

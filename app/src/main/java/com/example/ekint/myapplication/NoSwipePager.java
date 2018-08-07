@@ -6,7 +6,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * Created by ekint on 8/5/2018.
+ * NoSwipePager is a custom View Pager for the bottom navigation view
+ * Purpose is to provide ability to disable sliding as way to transition between fragments
+ * @author ekint
+ * @version
+ * Date: 8/5/18
  */
 
 public class NoSwipePager extends ViewPager {

@@ -13,7 +13,12 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 /**
- * Created by ekint on 8/5/2018.
+ * FeedRVAdapter is a custom Recycler View adapter responsible
+ * for the reusability of card views in Feed RV in FeedFragment
+ * @author ekint
+ * @version 1.0
+ * @see FeedFragment
+ * Date: 8/6/18
  */
 
 public class FeedRVAdapter extends RecyclerView.Adapter<FeedRVAdapter.FeedViewHolder>{

@@ -10,6 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * JournalFragment is the fragment that displays the user's journal and entries.
+ * Designed to have three tabs, each to view same data in different way
+ * Second in Bottom Navigation View
+ * @author ekint
+ * @version 1.0
+ *
+ */
 public class JournalFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

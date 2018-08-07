@@ -9,9 +9,11 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by timbuchalka on 9/08/2016.
+ * Click listener for recycler view items
+ * @author ekint
+ * @version 1.0
+ * Date: 8/5/18
  */
-
 class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchListener {
     private static final String TAG = "RecyclerItemClickListen";
 

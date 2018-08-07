@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ekint on 8/6/2018.
+ *
+ * @author ekint
+ *
+ *
  */
 
 public class TabAdapter extends FragmentStatePagerAdapter {
@@ -23,6 +26,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
         return mFragmentList.get(position);
     }
 

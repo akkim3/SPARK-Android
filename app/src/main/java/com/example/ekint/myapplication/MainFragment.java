@@ -15,7 +15,13 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * MainFragment is the fragment that displays main "menu" and general feeds for user.
+ * First in Bottom Navigation View
+ * @author ekint
+ * @version 1.0
+ * Date: 8/6/18
+ */
 public class MainFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,6 +93,10 @@ public class MainFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Populates entryList arrayList with fake entries
+     * entries displayed on main recycler view
+     */
     private void initializeData() {
         entryList = new ArrayList<Entry>();
         entryList.add(new Entry("Son throwing tantrums", "null"));

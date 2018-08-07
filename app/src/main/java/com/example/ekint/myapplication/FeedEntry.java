@@ -3,7 +3,12 @@ package com.example.ekint.myapplication;
 import java.io.Serializable;
 
 /**
- * Created by ekint on 8/5/2018.
+ * The FeedEntry class describes a q&a feed element.
+ * Designed to be instantiated as an object in other classes
+ * and stored in lists for recycler view population.
+ * @author ekint
+ * @version 1.0
+ * Date: 8/6/18
  */
 
 public class FeedEntry implements Serializable{
