@@ -58,6 +58,7 @@ public class MainActivity extends BaseActivity implements RecyclerItemClickListe
         Configuration config = getResources().getConfiguration();
         initializeData();
 
+        downloadURL(feedURL);
         setupViewPager();
         setupBNV();
 

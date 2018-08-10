@@ -6,7 +6,7 @@
     <string name="text_journal">Journal</string>
     <string name="text_chart">Chart</string>
     <string name="text_feed">Feed</string>
-    <string name="empty_entry">Null</string>
+    <string name="empty_entry">Loading...</string>
     <string name="entries">Recent Entries</string>
     <string name="questions">Daily Questions</string>
 
