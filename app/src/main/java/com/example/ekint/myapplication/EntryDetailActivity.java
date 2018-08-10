@@ -32,7 +32,7 @@ public class EntryDetailActivity extends BaseActivity{
             entryTitle.setText(entry.getTitle());
 
             TextView entryDate = (TextView) findViewById(R.id.tvDate);
-            entryDate.setText(entry.getDate());
+            entryDate.setText(entry.getDate().toString());
 //            photoTags.setText("Tags: " + photo.getTags());
 
             TextView entryDescription = (TextView) findViewById(R.id.tvDescription);

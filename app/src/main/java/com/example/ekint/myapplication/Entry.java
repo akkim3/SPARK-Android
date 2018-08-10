@@ -1,24 +1,24 @@
 package com.example.ekint.myapplication;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * The Entry class describes a user's journal entry.
- * Designed to be instantiated as an object in other classes
- * and stored in lists for recycler view population.
  * @author ekint
+ * @author ayushs
  * @version 1.0
- * Date: 8/6/18
  */
 
-public class Entry implements Serializable{
+public class Entry implements Comparable<Entry>{
     private String title;
-    private String date;
+    private Date date;
     private String time;
     private String description;
     private String image;
 
-    public Entry(String title, String date, String time, String description, String image) {
+    public Entry(String title, Date date, String time, String description, String image) {
         this.title = title;
         this.date = date;
         this.time = time;
@@ -31,6 +31,12 @@ public class Entry implements Serializable{
         this.image = image;
     }
 
+    public Entry(String title, String image, Date date){
+        this.title = title;
+        this.image = image;
+        this.date = date;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -39,11 +45,11 @@ public class Entry implements Serializable{
         this.title = title;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -80,5 +86,10 @@ public class Entry implements Serializable{
                 ", mDescription='" + description + '\'' +
                 ", mImage='" + image + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Entry o) {
+        return getDate().compareTo(o.getDate());
     }
 }

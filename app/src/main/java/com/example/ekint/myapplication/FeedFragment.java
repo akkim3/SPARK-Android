@@ -31,7 +31,6 @@ import java.util.List;
  * Date: 8/6/18
  */
 public class FeedFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private RecyclerView rvFeedEntries;
     private FeedRVAdapter feedAdapter;
@@ -42,7 +41,6 @@ public class FeedFragment extends Fragment {
     private static final String TAG = "FeedFragment";
     private String feedCachedURL = "INVALIDATED";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
